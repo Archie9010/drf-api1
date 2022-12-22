@@ -30,11 +30,14 @@ class PostList(generics.ListCreateAPIView):
     search_fields = [
         'owner__username',
         'title',
+        'owner__following__created__at',
+        'owner__followed__created__at',
     ]
     ordering_fields = [
         'likes_count',
         'comments_count',
         'likes__created_at',
+       
     ]
 
     def perform_create(self, serializer):
